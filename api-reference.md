@@ -20,42 +20,43 @@ Replace the root value in the state-tree.
 Works on: Strings, Numbers, Booleans,
 
 ```javascript
-//STATE = ""
+// STATE = ""
 
 D.SET({ "value": "Ash Ketchum"})
 
-//STATE = "Ash Ketchum"
+// STATE = "Ash Ketchum"
 ```
 
 ```javascript
-//STATE = 0
+// STATE = 0
 
 D.SET({ "value": 4})
 
-//STATE = 4
+// STATE = 4
 ```
 
 ```javascript
-//STATE = false
+// STATE = false
 
 D.SET({ "value": true})
 
-//STATE = true
+// STATE = true
 ```
 
 ### SET\_IN 
 
 ```javascript
-//STATE = { }
+// STATE = { }
 
 D.SET_IN({"Trainer": "Ash Ketchum"})
 D.SET_IN({"Badges": 4})
 D.SET_IN({"isBattling": true})
 
-/*STATE = {
-    "Trainer": "Ash Ketchum",
-    "Badges": 4,
-    "isBattling": true
+/* 
+STATE = {
+     "Trainer": "Ash Ketchum",
+     "Badges": 4,
+     "isBattling": true
 }
 */
 ```
@@ -65,31 +66,85 @@ Objects, Arrays
 ### INCREMENT
 
 ```java
-//STATE = 1
+// STATE = 1
 
 D.INCREMENT({"value": 1})
 
-//STATE = 2
+// STATE = 2
 ```
 
 ### DECREMENT
 
 ```java
-//STATE = 1
+// STATE = 1
 
 D.INCREMENT({"value": 1})
 
-//STATE = 0
+// STATE = 0
 ```
 
 ### SET\_ALL - Objects, Arrays
 
+#### Arrays
+
 ```java
-//STATE = 1
+// STATE = ["0", "0", "0"]
 
-D.INCREMENT({"value": 1})
+D.SET_ALL({"value": "1"})
 
-//STATE = 2
+// STATE = ["1", "1", "1"]
+```
+
+```java
+// STATE = [1, 2, 3]
+
+D.SET_ALL({"value": 3})
+
+// STATE = [3, 3, 3]
+```
+
+```java
+// STATE = [false, false, false]
+
+D.SET_ALL({"value": true})
+
+// STATE = [true, true, true]
+```
+
+#### Objects
+
+```java
+// STATE = {
+  "Pokemon1": "dead",
+  "Pokemon2": "dead",
+  "Pokemon3": "dead",
+}
+*/
+
+D.SET_ALL({"value": "alive"})
+
+// STATE = {
+  "Pokemon1": "alive",
+  "Pokemon2": "alive",
+  "Pokemon3": "alive",
+}
+*/
+```
+
+```java
+//STATE = [1, 2, 3]
+
+D.SET_ALL({"value": 3})
+
+//STATE = [3, 3, 3]
+```
+
+```java
+//STATE = [false, false, false]
+
+D.SET_ALL({"value": true})
+
+//STATE = [true, true, true]
 ```
 
 ### TOGGLE
