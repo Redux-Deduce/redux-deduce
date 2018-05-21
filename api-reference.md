@@ -20,7 +20,18 @@ Replace the root value in the state-tree.
 Works on: Numbers, Booleans, Strings
 
 ```javascript
-D.SET({value: 5}); // Sets root state to 5
+//STATE = {}
+
+D.SET({"Trainer": "Ash Ketchum"})
+D.SET({"Badges": 4})
+D.SET({"isBattling": true})
+
+/*STATE = {
+    "Trainer": "Ash Ketchum",
+    "Badges": 4,
+    "isBattling": true
+}
+*/
 ```
 
 ### SET\_IN 
