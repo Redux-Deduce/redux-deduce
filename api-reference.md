@@ -20,11 +20,11 @@ Replace the root value in the state-tree.
 Works on: Numbers, Booleans, Strings
 
 ```javascript
-//STATE = {}
+//STATE = { }
 
-D.SET({"Trainer": "Ash Ketchum"})
-D.SET({"Badges": 4})
-D.SET({"isBattling": true})
+D.SET_IN({"Trainer": "Ash Ketchum"})
+D.SET_IN({"Badges": 4})
+D.SET_IN({"isBattling": true})
 
 /*STATE = {
     "Trainer": "Ash Ketchum",
@@ -37,20 +37,64 @@ D.SET({"isBattling": true})
 ### SET\_IN 
 
 ```javascript
-D.SET_IN({value: 5, key}); // Sets root state to 5
+//STATE = { "Pokemon": "value": 4 }
+
+D.SET_IN({"key": "Pokemon", "value": 5})
+
+//STATE = { "Pokemon": "value": 5 }
 ```
 
 Objects, Arrays
 
 ### INCREMENT
 
+```java
+//STATE = 1
+
+D.INCREMENT({"value": 1})
+
+//STATE = 2
+```
+
 ### DECREMENT
+
+```java
+//STATE = 1
+
+D.INCREMENT({"value": 1})
+
+//STATE = 0
+```
 
 ### SET\_ALL - Objects, Arrays
 
+```java
+//STATE = 1
+
+D.INCREMENT({"value": 1})
+
+//STATE = 2
+```
+
 ### TOGGLE
 
+```java
+//STATE = true
+
+D.TOGGLE({"value": false})
+
+//STATE = false
+```
+
 ### ADD
+
+```javascript
+//STATE = { "Trainer": {} }
+
+D.ADD_IN({"path": "Trainer", "value": { "badges": 5 }})
+
+//STATE
+```
 
 ### INSERT
 
