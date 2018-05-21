@@ -17,7 +17,33 @@
 
 Replace the root value in the state-tree.
 
-Works on: Numbers, Booleans, Strings
+Works on: Strings, Numbers, Booleans,
+
+```javascript
+//STATE = ""
+
+D.SET({ "value": "Ash Ketchum"})
+
+//STATE = "Ash Ketchum"
+```
+
+```javascript
+//STATE = 0
+
+D.SET({ "value": 4})
+
+//STATE = 4
+```
+
+```javascript
+//STATE = false
+
+D.SET({ "value": true})
+
+//STATE = true
+```
+
+### SET\_IN 
 
 ```javascript
 //STATE = { }
@@ -32,16 +58,6 @@ D.SET_IN({"isBattling": true})
     "isBattling": true
 }
 */
-```
-
-### SET\_IN 
-
-```javascript
-//STATE = { "Pokemon": "value": 4 }
-
-D.SET_IN({"key": "Pokemon", "value": 5})
-
-//STATE = { "Pokemon": "value": 5 }
 ```
 
 Objects, Arrays
