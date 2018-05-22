@@ -22,7 +22,7 @@ Works on: Strings, Numbers, Booleans,
 ```javascript
 // STATE = ""
 
-D.SET({ "value": "Ash Ketchum"})
+D.SET({ "value": "Ash Ketchum" })
 
 // STATE = "Ash Ketchum"
 ```
@@ -30,7 +30,7 @@ D.SET({ "value": "Ash Ketchum"})
 ```javascript
 // STATE = 0
 
-D.SET({ "value": 4})
+D.SET({ "value": 4 })
 
 // STATE = 4
 ```
@@ -38,7 +38,7 @@ D.SET({ "value": 4})
 ```javascript
 // STATE = false
 
-D.SET({ "value": true})
+D.SET({ "value": true })
 
 // STATE = true
 ```
@@ -50,7 +50,7 @@ Objects, Arrays
 ```javascript
 // STATE = 1
 
-D.INCREMENT({"value": 1})
+D.INCREMENT({ "value": 1 })
 
 // STATE = 2
 ```
@@ -60,7 +60,7 @@ D.INCREMENT({"value": 1})
 ```javascript
 // STATE = 1
 
-D.INCREMENT({"value": 1})
+D.INCREMENT({ "value": 1 })
 
 // STATE = 0
 ```
@@ -72,7 +72,7 @@ D.INCREMENT({"value": 1})
 ```java
 // STATE = ["0", "0", "0"]
 
-D.SET_ALL({"value": "1"})
+D.SET_ALL({ "value": "1" })
 
 // STATE = ["1", "1", "1"]
 ```
@@ -80,7 +80,7 @@ D.SET_ALL({"value": "1"})
 ```java
 // STATE = [1, 2, 3]
 
-D.SET_ALL({"value": 3})
+D.SET_ALL({ "value": 3 })
 
 // STATE = [3, 3, 3]
 ```
@@ -88,7 +88,7 @@ D.SET_ALL({"value": 3})
 ```java
 // STATE = [false, false, false]
 
-D.SET_ALL({"value": true})
+D.SET_ALL({ "value": true })
 
 // STATE = [true, true, true]
 ```
@@ -104,7 +104,7 @@ STATE = {
 }
 */
 
-D.SET_ALL({"value": "alive"})
+D.SET_ALL({ "value": "alive" })
 
 /* 
 STATE = {
@@ -124,7 +124,7 @@ STATE = {
 }
 */
 
-D.SET_ALL({"value": 0})
+D.SET_ALL({ "value": 0 })
 
 /* 
 STATE = {
@@ -144,7 +144,7 @@ STATE = {
 }
 */
 
-D.SET_ALL({"value": true})
+D.SET_ALL({ "value": true })
 
 /* 
 STATE = {
@@ -160,7 +160,7 @@ STATE = {
 ```java
 // STATE = true
 
-D.TOGGLE({"value": false})
+D.TOGGLE({ "value": false })
 
 // STATE = false
 ```
@@ -199,7 +199,7 @@ D.INSERT({ "value": true, "index": 2 })
 
 ### MERGE
 
-```text
+```javascript
 /*
 STATE = {
     "Ash": "Online"
@@ -237,14 +237,14 @@ STATE = [ "Ash", "Mindy" ]
 ```javascript
 // STATE = { }
 
-D.SET_IN({"Trainer": "Ash Ketchum"})
-D.SET_IN({"Badges": 4})
-D.SET_IN({"isBattling": true})
+D.SET_IN({ "trainer": "Ash Ketchum" })
+D.SET_IN({ "badges": 4 })
+D.SET_IN({ "isBattling": true })
 
 /* 
 STATE = {
-     "Trainer": "Ash Ketchum",
-     "Badges": 4,
+     "trainer": "Ash Ketchum",
+     "badges": 4,
      "isBattling": true
 }
 */
@@ -253,11 +253,11 @@ STATE = {
 ### INCREMENT\_IN
 
 ```javascript
-// STATE = { "Pokemon": 3 }
+// STATE = { "pokemon": 3 }
 
-D.INCREMENT_IN({ "key": "Pokemon", "value": 1})
+D.INCREMENT_IN({ "path": "POKEMON", "value": 1})
 
-// STATE = { "Pokemon": 4 }
+// STATE = { "pokemon": 4 }
 ```
 
 ### INCREMENT\_ALL
@@ -273,11 +273,11 @@ D.INCREMENT_ALL({ "value": 100 })
 ### DECREMENT\_IN
 
 ```javascript
-// STATE = { "Pokemon": 4 }
+// STATE = { "pokemon": 4 }
 
-D.INCREMENT_IN({ "key": "Pokemon", "value": 1})
+D.INCREMENT_IN({ "path": "POKEMON", "value": 1})
 
-// STATE = { "Pokemon": 3 }
+// STATE = { "pokemon": 3 }
 ```
 
 ### DECREMENT\_ALL
@@ -295,7 +295,7 @@ D.INCREMENT_ALL({ "value": 100 })
 ```javascript
 // STATE = { "caught": false }
 
-D.TOGGLE_IN({ "key": "caught" })
+D.TOGGLE_IN({ "path": "CAUGHT" })
 
 // STATE = { "caught": true }
 ```
@@ -313,9 +313,9 @@ D.TOGGLE_IN({})
 ### ADD\_IN
 
 ```javascript
-// STATE = { "Trainer": {} }
+// STATE = { "trainer": {} }
 
-D.ADD_IN({ "path": "Trainer", "value": { "badges": 5 } })
+D.ADD_IN({ "path": "TRAINER", "value": { "badges": 5 } })
 
 // STATE
 ```
@@ -331,6 +331,30 @@ D.ADD({ "value": "Pickachu" })
 ```
 
 ### INSERT\_IN
+
+```javascript
+// STATE = { "pokemon": ["Pickachu", "Bulbasaur"] }
+
+D.INSERT_IN({ "value": "Squirtle", "index": 2, "path": "POKEMON" })
+
+// STATE = { "pokemon": ["Pickachu", "Bulbasaur", "Squirtle"] }
+```
+
+```javascript
+// STATE = { "scores": [ 100, 500 ] }
+
+D.INSERT_IN({ "value": 400, "index": 2, "path": "" })
+
+// STATE = [ 100, 500, 400 ]
+```
+
+```javascript
+// STATE = [ false, true ]
+
+D.INSERT_IN({ "value": true, "index": 2, "path": "POKEMON" })
+
+// STATE = [ false, true, true ]
+```
 
 ### UPDATE\_IN
 
