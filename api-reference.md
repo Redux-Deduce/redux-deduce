@@ -43,29 +43,11 @@ D.SET({ "value": true})
 // STATE = true
 ```
 
-### SET\_IN 
-
-```javascript
-// STATE = { }
-
-D.SET_IN({"Trainer": "Ash Ketchum"})
-D.SET_IN({"Badges": 4})
-D.SET_IN({"isBattling": true})
-
-/* 
-STATE = {
-     "Trainer": "Ash Ketchum",
-     "Badges": 4,
-     "isBattling": true
-}
-*/
-```
-
 Objects, Arrays
 
 ### INCREMENT
 
-```java
+```javascript
 // STATE = 1
 
 D.INCREMENT({"value": 1})
@@ -75,7 +57,7 @@ D.INCREMENT({"value": 1})
 
 ### DECREMENT
 
-```java
+```javascript
 // STATE = 1
 
 D.INCREMENT({"value": 1})
@@ -183,16 +165,6 @@ D.TOGGLE({"value": false})
 // STATE = false
 ```
 
-### ADD
-
-```javascript
-// STATE = { "Trainer": {} }
-
-D.ADD_IN({ "path": "Trainer", "value": { "badges": 5 } })
-
-// STATE
-```
-
 ### INSERT
 
 ```javascript
@@ -221,17 +193,62 @@ D.INSERT({ "value": true, "index": 2 })
 
 ### REMOVE
 
-```javascript
-// STATE = [ false, true ]
-
-D.INSERT({ "value": true, "index": 2 })
-
-// STATE = [ false, true, true ]
+```text
+// TO BE IMPLEMENTED
 ```
 
 ### MERGE
 
+```text
+/*
+STATE = {
+    "Ash": "Online"
+}
+*/
+
+D.MERGE({ "value": { "Mindy": "Online" } })
+
+/*
+STATE = {
+    "Ash": "Online",
+    "Mindy": "Online"
+}
+*/
+```
+
+### CONCAT
+
+```text
+/*
+STATE = [ "Ash" ]
+*/
+
+D.CONCAT({ "value": [ "Mindy" ] })
+
+/*
+STATE = [ "Ash", "Mindy" ]
+*/
+```
+
 ## Using IN and ALL
+
+### SET\_IN
+
+```javascript
+// STATE = { }
+
+D.SET_IN({"Trainer": "Ash Ketchum"})
+D.SET_IN({"Badges": 4})
+D.SET_IN({"isBattling": true})
+
+/* 
+STATE = {
+     "Trainer": "Ash Ketchum",
+     "Badges": 4,
+     "isBattling": true
+}
+*/
+```
 
 ### INCREMENT\_IN
 
@@ -247,6 +264,14 @@ D.INSERT({ "value": true, "index": 2 })
 
 ### ADD\_IN
 
+```javascript
+// STATE = { "Trainer": {} }
+
+D.ADD_IN({ "path": "Trainer", "value": { "badges": 5 } })
+
+// STATE
+```
+
 ### ADD\_ALL
 
 ### INSERT\_IN
@@ -260,6 +285,10 @@ D.INSERT({ "value": true, "index": 2 })
 ### MERGE\_IN
 
 ### MERGE\_ALL
+
+### CONCAT\_IN
+
+### CONCAT\_ALL
 
 
 
