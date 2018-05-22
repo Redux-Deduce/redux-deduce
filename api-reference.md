@@ -218,7 +218,7 @@ STATE = {
 
 ### CONCAT
 
-```text
+```javascript
 /*
 STATE = [ "Ash" ]
 */
@@ -252,15 +252,63 @@ STATE = {
 
 ### INCREMENT\_IN
 
+```javascript
+// STATE = { "Pokemon": 3 }
+
+D.INCREMENT_IN({ "key": "Pokemon", "value": 1})
+
+// STATE = { "Pokemon": 4 }
+```
+
 ### INCREMENT\_ALL
+
+```javascript
+// STATE = [ 200, 400 ]
+
+D.INCREMENT_ALL({ "value": 100 })
+
+// STATE = [ 300, 500 ]
+```
 
 ### DECREMENT\_IN
 
+```javascript
+// STATE = { "Pokemon": 4 }
+
+D.INCREMENT_IN({ "key": "Pokemon", "value": 1})
+
+// STATE = { "Pokemon": 3 }
+```
+
 ### DECREMENT\_ALL
+
+```javascript
+// STATE = [ 200, 400 ]
+
+D.INCREMENT_ALL({ "value": 100 })
+
+// STATE = [ 300, 500 ]
+```
 
 ### TOGGLE\_IN
 
+```javascript
+// STATE = { "caught": false }
+
+D.TOGGLE_IN({ "key": "caught" })
+
+// STATE = { "caught": true }
+```
+
 ### TOGGLE\_ALL
+
+```javascript
+// STATE = [ false, false, false ]
+
+D.TOGGLE_IN({})
+
+// STATE = [ true, true, true ]
+```
 
 ### ADD\_IN
 
@@ -272,7 +320,15 @@ D.ADD_IN({ "path": "Trainer", "value": { "badges": 5 } })
 // STATE
 ```
 
-### ADD\_ALL
+### ADD
+
+```javascript
+// STATE = [ "Mew", "Geodude", ]
+
+D.ADD({ "value": "Pickachu" })
+
+// STATE = [ "Mew", "Geodude", "Pickachu" ]
+```
 
 ### INSERT\_IN
 
