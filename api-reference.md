@@ -358,17 +358,88 @@ D.INSERT_IN({ "value": true, "index": 2, "path": "POKEMON" })
 
 ### UPDATE\_IN
 
+// TO BE IMPLEMENT
+
 ### REMOVE\_IN
+
+```javascript
+// STATE = [ "Wombat", "Golbat", "Geodude" ]
+
+D.REMOVE_IN({ 
+  "where": (v) => v == "Golbat"
+})
+
+// STATE = [ "Wombat", "Geodude" ]
+```
 
 ### REMOVE\_ALL
 
+```javascript
+// STATE = [ "Wombat", "Golbat", "Geodude" ]
+
+D.REMOVE_ALL({ })
+
+// STATE = [ ]
+```
+
 ### MERGE\_IN
+
+```javascript
+/*
+STATE = {
+  "Ash": {
+    "pokemon": []
+    },
+  "Mindy": {
+    "pokemon": [],
+    }
+}
+*/
+
+D.MERGE_IN({ "key": "Ash", "value": { "playing": true } })
+
+/*
+STATE = {
+  "Ash": {
+    "pokemon": [],
+    "playing": true
+    },
+  "Mindy": {
+    "pokemon": [],
+    }
+}
+*/
+```
 
 ### MERGE\_ALL
 
-### CONCAT\_IN
+```javascript
+/*
+STATE = {
+  "Ash": {
+    "pokemon": []
+  },
+  "Mindy": {
+    "pokemon": []
+  }
+}
+*/
 
-### CONCAT\_ALL
+D.MERGE_ALL({ "value": { "playing": true } })
+
+/*
+STATE = {
+  "Ash": {
+    "pokemon": [],
+    "playing": true
+  },
+  "Mindy": {
+    "pokemon": [],
+    "playing": true
+  }
+}
+*/
+```
 
 
 
