@@ -114,7 +114,8 @@ D.SET_ALL({"value": true})
 #### Objects
 
 ```java
-// STATE = {
+/* 
+STATE = {
   "Pokemon1": "dead",
   "Pokemon2": "dead",
   "Pokemon3": "dead",
@@ -123,7 +124,8 @@ D.SET_ALL({"value": true})
 
 D.SET_ALL({"value": "alive"})
 
-// STATE = {
+/* 
+STATE = {
   "Pokemon1": "alive",
   "Pokemon2": "alive",
   "Pokemon3": "alive",
@@ -132,44 +134,100 @@ D.SET_ALL({"value": "alive"})
 ```
 
 ```java
-//STATE = [1, 2, 3]
+/* 
+STATE = {
+  "Score1": 300,
+  "Score2": 400,
+  "Score3": 200,
+}
+*/
 
-D.SET_ALL({"value": 3})
+D.SET_ALL({"value": 0})
 
-//STATE = [3, 3, 3]
+/* 
+STATE = {
+  "Pokemon1": 0,
+  "Pokemon2": 0,
+  "Pokemon3": 0,
+}
+*/
 ```
 
 ```java
-//STATE = [false, false, false]
+/* 
+STATE = {
+  "Pokemon1": false,
+  "Pokemon2": false,
+  "Pokemon3": false,
+}
+*/
 
 D.SET_ALL({"value": true})
 
-//STATE = [true, true, true]
+/* 
+STATE = {
+  "Pokemon1": "alive",
+  "Pokemon2": "alive",
+  "Pokemon3": "alive",
+}
+*/
 ```
 
 ### TOGGLE
 
 ```java
-//STATE = true
+// STATE = true
 
 D.TOGGLE({"value": false})
 
-//STATE = false
+// STATE = false
 ```
 
 ### ADD
 
 ```javascript
-//STATE = { "Trainer": {} }
+// STATE = { "Trainer": {} }
 
-D.ADD_IN({"path": "Trainer", "value": { "badges": 5 }})
+D.ADD_IN({ "path": "Trainer", "value": { "badges": 5 } })
 
-//STATE
+// STATE
 ```
 
 ### INSERT
 
+```javascript
+// STATE = ["Pickachu", "Bulbasaur"]
+
+D.INSERT({ "value": "Squirtle", "index": 2 })
+
+// STATE = ["Pickachu", "Bulbasaur", "Squirtle"]
+```
+
+```javascript
+// STATE = [ 100, 500 ]
+
+D.INSERT({ "value": 400, "index": 2 })
+
+// STATE = [ 100, 500, 400 ]
+```
+
+```javascript
+// STATE = [ false, true ]
+
+D.INSERT({ "value": true, "index": 2 })
+
+// STATE = [ false, true, true ]
+```
+
 ### REMOVE
+
+```javascript
+// STATE = [ false, true ]
+
+D.INSERT({ "value": true, "index": 2 })
+
+// STATE = [ false, true, true ]
+```
 
 ### MERGE
 
