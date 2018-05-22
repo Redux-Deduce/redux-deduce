@@ -1,7 +1,7 @@
 const { entity, id, foreignKey, proxy } = require('./symbols')
 const Validator = require('./validators')
 const V = new Validator(entity)
-const replace = require('./normalizedDataReplacement')
+const { replaceEntity, replaceManyEntities } = require('./normalizedDataReplacement')
 
 
 class NormalizedState {
@@ -39,8 +39,14 @@ class NormalizedState {
         proxyRecord.proxy = proxObj
     }
 
+    replaceMany(type, where, callback) {
+        const { normalizedData, rootEntity } = replaceManyEntities(type, where, callback, this.normalizedData, this.rootEntity)
+        const schema = this.schema
+        return new NormalizedState({ normalizedData, rootEntity, schema })
+    }
+
     replace(target, value) {
-        const { normalizedData, rootEntity } = replace(this.normalizedData, this.rootEntity, target, value)
+        const { normalizedData, rootEntity } = replaceEntity(this.normalizedData, this.rootEntity, target, value)
         const schema = this.schema
         return new NormalizedState({ normalizedData, rootEntity, schema })
     }

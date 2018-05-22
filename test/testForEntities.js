@@ -18,6 +18,11 @@ describe('states with entity symbols', () => {
         reducer = deduce(reducer);
     })
     it('get converted to proxied objects', () => {
-        reducer(initialState, {})
+        const state = reducer(undefined, {})
+        expect(state).toEqual({
+            name: "Bill",
+            age: 27,
+            pokemon: [{ name: 'Pikachu' }]
+        })
     })
 })

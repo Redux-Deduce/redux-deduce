@@ -13,6 +13,7 @@ const getRootData = Symbol('root data')
 
 //method access symbols
 const replace = Symbol('replace')
+const replaceMany = Symbol('replace many')
 
 module.exports = {
     entity,
@@ -22,5 +23,6 @@ module.exports = {
     getSchema,
     getRootData,
     replace,
+    replaceMany,
     proxy,
 }

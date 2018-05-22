@@ -16,6 +16,11 @@ class NormalizedDataReplacement {
         return this._old[entityType][fk]
     }
 
+    getEntityList(entityType, entityFilter) {
+        const table = Object.values(this._old[entityType])
+        return V.typeOf(entityFilter) === 'function' ? table.filter(entityFilter) : table
+    }
+
     getPath(target) {
         const proxyId = target[proxy]
         return this._old[proxy][proxyId].path
@@ -109,7 +114,23 @@ class NormalizedDataReplacement {
 }
 
 //export
-function replace(oldNormalizedData, oldRoot, target, value) {
+function replaceManyEntities(entityType, entityFilter, updateFn, normalizedData, oldRoot) {
+    const newNorm = new NormalizedDataReplacement(normalizedData, oldRoot)
+    const oldEntityList = newNorm.getEntityList(entityType, entityFilter)
+    // console.log('\nselected entities before action\n', oldEntityList)
+    // console.log('\n\nthe update function is\n', updateFn)
+    const newEntityList = oldEntityList.map(updateFn)
+    // console.log('\nselected entities after action\n', newEntityList)
+    newEntityList.forEach((e, i) => newNorm.merge(oldEntityList[i], e))
+    newNorm.clearProxies()
+    newNorm.mergeInOldData()
+    const newNormData = newNorm.getNewData()
+    const newRoot = newNorm.getNewRoot()
+    return { normalizedData: newNormData, rootEntity: newRoot }
+}
+
+//export
+function replaceEntity(oldNormalizedData, oldRoot, target, value) {
     const newNorm = new NormalizedDataReplacement(oldNormalizedData, oldRoot)
     const [{ [foreignKey]: entityId, entityType }, ...path] = newNorm.getPath(target)
     const targetEntity = newNorm.getEntity(entityType, entityId)
@@ -136,4 +157,7 @@ function isForeignKey(data) {
     return syms.includes(foreignKey)
 }
 
-module.exports = replace
+module.exports = {
+    replaceEntity,
+    replaceManyEntities,
+}

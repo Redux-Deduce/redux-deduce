@@ -25,14 +25,15 @@ function actionTypeParser(actionType) {
   ];
   let verb;
   let path;
+  if (!actionType) return { verb, path }
   for (let action of validActions) {
     if (actionType.startsWith(action)) {
       verb = action;
       path = actionType.replace(verb, '').replace('_', '');
-      return {verb, path}
+      return { verb, path }
     }
   }
-  return {verb, path} // Undefined if no match
+  return { verb, path } // Undefined if no match
 }
 
 module.exports = actionTypeParser;
