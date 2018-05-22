@@ -1,0 +1,40 @@
+{
+  "name": "redux-deduce",
+  "version": "0.0.0",
+  "description": "Automated Redux state updates for common actions.",
+  "main": "build/dedux.js",
+  "scripts": {
+    "test": "mocha \"test/*.js\"",
+    "dev": "webpack --progress --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Redux-Deduce/redux-deduce.git"
+  },
+  "keywords": [
+    "Redux",
+    "boilerplate",
+    "reducer",
+    "enhancer"
+  ],
+  "author": "Denali DeMots, Daniel Boisselle, Alex Egorenkov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Redux-Deduce/redux-deduce/issues"
+  },
+  "homepage": "https://github.com/Redux-Deduce/redux-deduce#readme",
+  "dependencies": {
+    "deep-equal": "^1.0.1"
+  },
+  "devDependencies": {
+    "babel-loader": "^7.1.4",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "deep-freeze": "0.0.1",
+    "expect": "^22.4.3",
+    "mocha": "^5.1.1",
+    "webpack": "^4.8.0",
+    "webpack-cli": "^2.1.3"
+  }
+}
