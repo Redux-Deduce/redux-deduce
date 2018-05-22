@@ -1,5 +1,7 @@
 # Introduction
 
+Official docs at [https://redux-deduce.gitbook.io/redux-deduce/](https://redux-deduce.gitbook.io/redux-deduce/)
+
 ## Features
 
 Reduce your reducer boilerplate with Redux-deduce. 
@@ -16,7 +18,7 @@ Reduce your reducer boilerplate with Redux-deduce.
 ## Installation
 
 ```text
-npm install redux-deduce
+npm install Redux-Deduce/redux-deduce
 ```
 
 ## Basic Usage
