@@ -2,6 +2,8 @@
 
 Official docs at [https://redux-deduce.gitbook.io/redux-deduce/](https://redux-deduce.gitbook.io/redux-deduce/)
 
+![](.gitbook/assets/redux-deduce.png)
+
 ## Features
 
 Reduce your reducer boilerplate with Redux-deduce. 
