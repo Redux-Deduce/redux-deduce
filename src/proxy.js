@@ -1,5 +1,5 @@
 //hidden property access symbols
-const { entity, id, foreignKey, getNormalized, getSchema, getRootData, replace, proxy, dataProxy, schemaProxy, normalizedProxy } = require('./symbols')
+const { entity, id, foreignKey, getNormalized, getSchema, getRootData, replace, replaceMany, proxy, dataProxy, schemaProxy, normalizedProxy } = require('./symbols')
 const secretSymbols = [entity, id, foreignKey, proxy, getNormalized, normalizedProxy, getSchema, schemaProxy, getRootData, dataProxy, replace]
 const allowedKeyList = {
     data: [],
@@ -55,6 +55,7 @@ class StateProxy {
                 }
                 if (prop === getRootData) return this._getProxy(this._normalizedData.getRoot())
                 if (prop === replace) return this._updateFn(target)
+                if (prop === replaceMany) return (type, where, callback) => this._updateManyFn(type, where, callback)
                 if (allowedKeys.includes(prop)) return this._lookupValue(target[prop])
                 if (secretSymbols.includes(prop)) return undefined
                 return this._lookupValue(target[prop])
@@ -65,6 +66,11 @@ class StateProxy {
             }
         }
         return new Proxy(obj, handler)
+    }
+
+    _updateManyFn(type, where, callback) {
+        const newNormalData = this._normalizedData.replaceMany(type, where, callback)
+        return new StateProxy(newNormalData)
     }
 
     _updateFn(target) {
